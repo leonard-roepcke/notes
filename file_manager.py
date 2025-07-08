@@ -1,3 +1,4 @@
+import os
 class File_manager():
     def __init__(self):
         self.path = "notes/"
@@ -7,3 +8,11 @@ class File_manager():
         text = input("write notes:")
         with open(self.path+name+".txt", "w") as f:
             f.write(text)
+    
+    def show_files(self):
+        dateien = os.listdir(self.path)
+        for datei in dateien:
+            print(datei)
+
+    def rm_all(self):
+        print("rm files not implementet jet")
