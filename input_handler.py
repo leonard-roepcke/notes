@@ -17,6 +17,8 @@ map = {
     "rm -rf": file_mg.del_dir,
     "rm -d": file_mg.del_dir,
     "rmdir": file_mg.del_dir,
+    "edit": file_mg.edit_file,
+    "cat": file_mg.show_file,
 }
 
 def input_handler():

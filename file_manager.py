@@ -1,13 +1,18 @@
 import os
+import shutil
 class File_manager():
     def __init__(self):
         self.path = "notes/"
 
     def create_note(self):
         name = input("note name #")
-        text = input("write notes:")
-        with open(self.path+name+".txt", "w") as f:
-            f.write(text)
+        write_path = self.path+name+".txt"
+        if os.path.exists(write_path) == False:
+            text = input("write notes:")
+            with open(write_path, "w") as f:
+                f.write(text)
+        else:
+            print("This file exists already")
     
     def show_files(self):
         dateien = os.listdir(self.path)
@@ -33,6 +38,14 @@ class File_manager():
 
     def schow_dir(self):
         print(self.path)
+
+    def show_file(self):
+        name = input("name: #")
+        write_path = self.path+name+".txt"
+        if os.path.exists(write_path):
+            print("Inhalt von"+name+".txt:" +open(write_path, "r").read())
+        else:
+            print("This file doesen`t exit")
     
     def mk_dir(self):
         name = input("name #")
@@ -50,4 +63,15 @@ class File_manager():
 
     def del_dir(self):
         name = input("name: #")
-        os.rmdir(self.path+name)
+        shutil.rmtree(self.path+name)
+
+    def edit_file(self):
+        name = input("name: #")
+        write_path = self.path+name+".txt"
+        if os.path.exists(write_path):
+            print(open(write_path, "r").read())
+            text = input("write notes:")
+            with open(write_path, "w") as f:
+                f.write(text)
+        else:
+            print("This file doesen`t exit")
