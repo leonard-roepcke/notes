@@ -37,3 +37,17 @@ class File_manager():
     def mk_dir(self):
         name = input("name #")
         os.mkdir(self.path+name)
+
+    def del_file(self):
+        name = input("name #")
+        try: 
+            if name.endswith(".txt"):
+                os.remove(self.path+name)
+            else:
+                os.remove(self.path+name+".txt")
+        except:
+            print("no such file (use rm -rf to delet the dir)")
+
+    def del_dir(self):
+        name = input("name: #")
+        os.rmdir(self.path+name)

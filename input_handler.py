@@ -13,6 +13,10 @@ map = {
     "cd": file_mg.move_in_dir,
     "pwd": file_mg.schow_dir,
     "mkdir": file_mg.mk_dir,
+    "rm": file_mg.del_file,
+    "rm -rf": file_mg.del_dir,
+    "rm -d": file_mg.del_dir,
+    "rmdir": file_mg.del_dir,
 }
 
 def input_handler():
