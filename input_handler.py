@@ -11,9 +11,11 @@ map = {
     "rm -rf ." : file_mg.rm_all,
     "cd .." : file_mg.cd_back,
     "cd": file_mg.move_in_dir,
+    "pwd": file_mg.schow_dir,
+    "mkdir": file_mg.mk_dir,
 }
 
 def input_handler():
-    inp = input("#")
+    inp = input(file_mg.path+" #")
     map.get(inp, fallback)()
     

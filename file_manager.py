@@ -27,5 +27,13 @@ class File_manager():
         print("path not found")
 
     def cd_back(self):
-        print("cd back not implementet jet")
-        
+        self.path = os.path.dirname(self.path)
+        self.path = os.path.dirname(self.path)
+        self.path += "/"
+
+    def schow_dir(self):
+        print(self.path)
+    
+    def mk_dir(self):
+        name = input("name #")
+        os.mkdir(self.path+name)
