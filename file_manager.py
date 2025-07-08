@@ -4,8 +4,11 @@ class File_manager():
     def __init__(self):
         self.path = "notes/"
 
-    def create_note(self):
-        name = input("note name #")
+    def create_note(self, name=""):
+        if name == "":
+            print("No name was given")
+            return
+
         write_path = self.path+name+".txt"
         if os.path.exists(write_path) == False:
             text = input("write notes:")
@@ -14,16 +17,18 @@ class File_manager():
         else:
             print("This file exists already")
     
-    def show_files(self):
-        dateien = os.listdir(self.path)
+    def show_files(self, dir=""):
+        dateien = os.listdir(self.path+dir)
         for datei in dateien:
             print(datei)
 
-    def rm_all(self):
-        print("rm files not implementet jet")
-
-    def move_in_dir(self):
-        new_dir = input("dir: #")
+    def move_in_dir(self, folder=""):
+        new_dir = folder
+        if folder == "..":
+            self.cd_back()
+            return
+        if folder == "":
+            print("no folder selected")
         dateien = os.listdir(self.path)
         for datei in dateien:
             if datei == new_dir:
@@ -31,7 +36,7 @@ class File_manager():
                 return
         print("path not found")
 
-    def cd_back(self):
+    def cd_back(self, name=""):
         self.path = os.path.dirname(self.path)
         self.path = os.path.dirname(self.path)
         self.path += "/"
@@ -39,20 +44,26 @@ class File_manager():
     def schow_dir(self):
         print(self.path)
 
-    def show_file(self):
-        name = input("name: #")
+    def show_file(self, name=""):
+        if name == "":
+            print("no name was given")
+            return
         write_path = self.path+name+".txt"
         if os.path.exists(write_path):
             print("Inhalt von"+name+".txt:" +open(write_path, "r").read())
         else:
             print("This file doesen`t exit")
     
-    def mk_dir(self):
-        name = input("name #")
+    def mk_dir(self, name=""):
+        if name == "":
+            print("no name was given")
+            return
         os.mkdir(self.path+name)
 
-    def del_file(self):
-        name = input("name #")
+    def del_file(self, name=""):
+        if name == "-rf":
+            self.del_dir()
+            return
         try: 
             if name.endswith(".txt"):
                 os.remove(self.path+name)
@@ -61,12 +72,16 @@ class File_manager():
         except:
             print("no such file (use rm -rf to delet the dir)")
 
-    def del_dir(self):
-        name = input("name: #")
+    def del_dir(self, name=""):
+        if name == "":
+            print("no name was given")
+            return
         shutil.rmtree(self.path+name)
 
-    def edit_file(self):
-        name = input("name: #")
+    def edit_file(self, name=""):
+        if name == "":
+            print("no name was given")
+            return
         write_path = self.path+name+".txt"
         if os.path.exists(write_path):
             print(open(write_path, "r").read())
