@@ -1,17 +1,16 @@
 import file_manager
 file_mg = file_manager.File_manager()
 
-
-
 def fallback():
     print("wrong input")
-
 
 
 map = {
     "ls": file_mg.show_files,
     "qn": file_mg.create_note,
     "rm -rf ." : file_mg.rm_all,
+    "cd .." : file_mg.cd_back,
+    "cd": file_mg.move_in_dir,
 }
 
 def input_handler():
