@@ -24,7 +24,6 @@ class Ui_folder_layout(QWidget):
         scroll.setWidget(content_widget)
 
         # Widgets
-        #print(self.ref_ui_manager.getFolder())
         grid_layout.addWidget(back.Back(), 0, 0)
         grid_layout.addWidget(add_file.Add_file(), 0, 1)
         grid_layout.addWidget(add_dir.Add_dir(), 0, 2)

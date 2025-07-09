@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QTextEdit, QPushButton, QLabel
 class Back(QWidget):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(400, 50)
+        self.setFixedSize(400, 200)
         self.setStyleSheet("""
             background-color: #f0f0f0;
             border: 2px solid black;
