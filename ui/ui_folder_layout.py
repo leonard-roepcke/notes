@@ -37,10 +37,14 @@ class Ui_folder_layout(QWidget):
             row = idx // columns
             col = idx % columns
 
-            fw = folder.Folder(folder_name)
+            fw = folder.Folder(self, folder_name)
             self.grid_layout.addWidget(fw, row+1, col)
 
     def reqest_creat_dir(self):
         self.ref_ui_manager.reqest_creat_dir()
+        self.update_file_shown()
+
+    def reqest_cd_dir(self, name=""):
+        self.ref_ui_manager.reqest_cd_dir(name)
         self.update_file_shown()
 

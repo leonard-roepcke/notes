@@ -36,10 +36,12 @@ class File_manager():
         if folder == "":
             print("no folder selected")
         dateien = os.listdir(self.path)
+        
         for datei in dateien:
             if datei == new_dir:
                 self.path += new_dir + "/"
                 return
+        print("path: ", self.path)
         print("path not found")
 
     def cd_back(self, name=""):

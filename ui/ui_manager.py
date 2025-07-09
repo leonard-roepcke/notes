@@ -33,4 +33,8 @@ class UIManager(QMainWindow):
         return self.file_manager.show_files()
     
     def reqest_creat_dir(self):
-        self.file_manager.mk_dir("New File: "+str(len(self.file_manager.show_files())))
+        self.file_manager.mk_dir("new_File_"+str(len(self.file_manager.show_files())))
+
+    def reqest_cd_dir(self, name=""):
+        print("name"+ name)
+        self.file_manager.move_in_dir(name)
