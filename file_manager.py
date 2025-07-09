@@ -20,6 +20,10 @@ class File_manager():
     
     def show_files(self, dir=""):
         dateien = os.listdir(self.path+dir)
+        dateien = sorted(
+            dateien,
+            key=lambda x: os.path.getctime(os.path.join(self.path+dir, x))
+        )
         for datei in dateien:
             print(datei)
         return(dateien)

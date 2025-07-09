@@ -31,3 +31,6 @@ class UIManager(QMainWindow):
     def getFolder(self):
         print("get Folder:   ",self.file_manager.show_files())
         return self.file_manager.show_files()
+    
+    def reqest_creat_dir(self):
+        self.file_manager.mk_dir("New File: "+str(len(self.file_manager.show_files())))

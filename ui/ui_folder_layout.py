@@ -18,21 +18,29 @@ class Ui_folder_layout(QWidget):
         main_layout.addWidget(scroll)
 
         content_widget = QWidget()
-        grid_layout = QGridLayout()
-        content_widget.setLayout(grid_layout)
+        self.grid_layout = QGridLayout()
+        content_widget.setLayout(self.grid_layout)
 
         scroll.setWidget(content_widget)
 
-        # Widgets
-        grid_layout.addWidget(back.Back(), 0, 0)
-        grid_layout.addWidget(add_file.Add_file(), 0, 1)
-        grid_layout.addWidget(add_dir.Add_dir(), 0, 2)
-        grid_layout.addWidget(add_projekt.Add_projekt(), 0, 3)
+        self.update_file_shown()
+
+        
+
+    def update_file_shown(self):
+        self.grid_layout.addWidget(back.Back(), 0, 0)
+        self.grid_layout.addWidget(add_file.Add_file(), 0, 1)
+        self.grid_layout.addWidget(add_dir.Add_dir(self), 0, 2)
+        self.grid_layout.addWidget(add_projekt.Add_projekt(), 0, 3)
 
         for idx, folder_name in enumerate(self.ref_ui_manager.getFolder()):
             row = idx // columns
             col = idx % columns
 
             fw = folder.Folder(folder_name)
-            grid_layout.addWidget(fw, row+1, col)
+            self.grid_layout.addWidget(fw, row+1, col)
+
+    def reqest_creat_dir(self):
+        self.ref_ui_manager.reqest_creat_dir()
+        self.update_file_shown()
 

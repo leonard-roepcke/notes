@@ -2,9 +2,10 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
 from PyQt5.QtWidgets import QSizePolicy
 
 class Add_dir(QWidget):
-    def __init__(self):
+    def __init__(self, ref_layout=""):
         super().__init__()
         self.setFixedSize(400, 200)
+        self.ref_layout = ref_layout
 
         layout = QVBoxLayout()
         self.setLayout(layout)
@@ -25,6 +26,4 @@ class Add_dir(QWidget):
         self.button.clicked.connect(self.on_click)
 
     def on_click(self):
-        print("Button wurde geklickt!")
-        # Hier rufst du deine Funktion aus dem Manager auf
-        # z.B. self.ref_manager.add_directory()
+            self.ref_layout.reqest_creat_dir()
