@@ -1,9 +1,9 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QTextEdit, QPushButton, QLabel
 
-class Folder(QWidget):
-    def __init__(self, name="No Name"):
+class Back(QWidget):
+    def __init__(self):
         super().__init__()
-        self.setFixedSize(400, 400)
+        self.setFixedSize(400, 50)
         self.setStyleSheet("""
             background-color: #f0f0f0;
             border: 2px solid black;
@@ -13,7 +13,7 @@ class Folder(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.label = QLabel(name)
-        self.label.setStyleSheet("""color: red;font-size: 14px;background-color: #333;""")
+        self.label = QLabel("back /..")
+        self.label.setStyleSheet("""color: #fff;font-size: 20px;background-color: #333;""")
 
         layout.addWidget(self.label)
