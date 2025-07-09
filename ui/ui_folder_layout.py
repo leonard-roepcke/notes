@@ -1,23 +1,23 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QTextEdit, QPushButton
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QTextEdit, QPushButton, QGridLayout
+from ui import folder_wigit as folder
+
+columns = 4
 
 class Ui_folder_layout(QWidget):
-    def __init__(self):
+    def __init__(self, ref_ui_manager=""):
         super().__init__()
+        self.ref_ui_manager = ref_ui_manager
 
         # Layout
-        layout = QVBoxLayout()
+        layout = QGridLayout()
         self.setLayout(layout)
+        self.ref_ui_manager = ref_ui_manager
 
         # Widgets
-        self.text_edit = QTextEdit()
-        self.save_button = QPushButton("Speichern")
+        for idx, folder_name in enumerate(self.ref_ui_manager.getFolder()):
+            row = idx // columns
+            col = idx % columns
 
-        layout.addWidget(self.text_edit)
-        layout.addWidget(self.save_button)
+            fw = folder.Folder(folder_name)
+            layout.addWidget(fw, row, col)
 
-        # Logik (nur Beispiel)
-        self.save_button.clicked.connect(self.save_note)
-
-    def save_note(self):
-        text = self.text_edit.toPlainText()
-        print("Notiz gespeichert:", text)

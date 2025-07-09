@@ -1,8 +1,9 @@
 import os
 import shutil
 class File_manager():
-    def __init__(self):
+    def __init__(self, ref_ui_manager=""):
         self.path = "notes/"
+        self.ref_ui_manager = ref_ui_manager
 
     def create_note(self, name=""):
         if name == "":
@@ -43,6 +44,9 @@ class File_manager():
 
     def schow_dir(self):
         print(self.path)
+
+    def read_dir(self):
+        return self.path
 
     def show_file(self, name=""):
         if name == "":
