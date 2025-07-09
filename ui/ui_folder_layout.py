@@ -14,6 +14,7 @@ class Ui_folder_layout(QWidget):
         self.ref_ui_manager = ref_ui_manager
 
         # Widgets
+        print(self.ref_ui_manager.getFolder())
         for idx, folder_name in enumerate(self.ref_ui_manager.getFolder()):
             row = idx // columns
             col = idx % columns

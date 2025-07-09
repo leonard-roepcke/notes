@@ -29,4 +29,5 @@ class UIManager(QMainWindow):
         self.stack.setCurrentWidget(self.editor_layout)
     
     def getFolder(self):
-        return self.file_manager.read_dir()
+        print("get Folder:   ",self.file_manager.show_files())
+        return self.file_manager.show_files()

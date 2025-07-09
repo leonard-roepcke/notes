@@ -22,6 +22,7 @@ class File_manager():
         dateien = os.listdir(self.path+dir)
         for datei in dateien:
             print(datei)
+        return(dateien)
 
     def move_in_dir(self, folder=""):
         new_dir = folder
