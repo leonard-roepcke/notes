@@ -28,7 +28,14 @@ class Ui_folder_layout(QWidget):
         
 
     def update_file_shown(self):
-        self.grid_layout.addWidget(back.Back(), 0, 0)
+
+        while self.grid_layout.count():
+            item = self.grid_layout.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.deleteLater()
+
+        self.grid_layout.addWidget(back.Back(self), 0, 0)
         self.grid_layout.addWidget(add_file.Add_file(), 0, 1)
         self.grid_layout.addWidget(add_dir.Add_dir(self), 0, 2)
         self.grid_layout.addWidget(add_projekt.Add_projekt(), 0, 3)
