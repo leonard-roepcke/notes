@@ -62,6 +62,7 @@ class File_manager():
         write_path = self.path+name+".txt"
         if os.path.exists(write_path):
             print("Inhalt von"+name+".txt:" +open(write_path, "r").read())
+            return(open(write_path, "r").read())
         else:
             print("This file doesen`t exit")
     
@@ -101,3 +102,9 @@ class File_manager():
                 f.write(text)
         else:
             print("This file doesen`t exit")
+
+    def override_file(self, file, data):
+        write_path = self.path+file
+        with open(write_path, "w") as f:
+            f.write(data)
+
